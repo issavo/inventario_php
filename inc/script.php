@@ -1,4 +1,5 @@
 <script>
+    // navbar-burguer
     document.addEventListener('DOMContentLoaded', () => {
 
         // Get all "navbar-burger" elements
@@ -21,3 +22,7 @@
 
     });
 </script>
+<!-- Sending forms -->
+<script src="./js/ajax.js"></script>
+
+
