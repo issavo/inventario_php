@@ -1,6 +1,6 @@
-# Thriflora
+# Inventario
 
-Thriflora is a registration form to collect emails from potential customers who want to be the first to test the online shop. At the moment it is only shown in Spain, Italy and France.
+Inventario is a registration form to collect emails from potential customers who want to be the first to test the online shop. At the moment it is only shown in Spain, Italy and France.
 
 ## Content
 
