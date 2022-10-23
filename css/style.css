@@ -14,7 +14,8 @@ html {
     align-items: center;
 }
 
-.main-container > .login{
+.main-container > .login,
+.main-container > .hero-body {
     height: auto;
     width: 100%;
     max-width: 400px;
