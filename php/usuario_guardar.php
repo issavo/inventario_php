@@ -29,7 +29,7 @@
         echo '
             <div class="notification is-danger">
                 <strong> Ocurrio un error inesperado</strong><br/>
-                El nombre no coincide con el formato solicitado
+                El NOMBRE no coincide con el formato solicitado
             </div>
         ';
         exit();
@@ -38,7 +38,7 @@
         echo '
             <div class="notification is-danger">
                 <strong> Ocurrio un error inesperado</strong><br/>
-                El apellido no coincide con el formato solicitado
+                El APELLIDO no coincide con el formato solicitado
             </div>
         ';
         exit();
@@ -47,7 +47,7 @@
         echo '
             <div class="notification is-danger">
                 <strong> Ocurrio un error inesperado</strong><br/>
-                El usuario no coincide con el formato solicitado
+                El USUARIO no coincide con el formato solicitado
             </div>
         ';
         exit();
@@ -57,7 +57,7 @@
         echo '
             <div class="notification is-danger">
                 <strong> Ocurrio un error inesperado</strong><br/>
-                Las claves no coincide con el formato solicitado
+                Las CONTRASEÑAS no coincide con el formato solicitado
             </div>
         ';
         exit();
@@ -82,7 +82,7 @@
             echo '
                 <div class="notification is-danger">
                     <strong> Ocurrio un error inesperado</strong><br/>
-                    El email introducido no es valido
+                    El EMAIL introducido no es valido
                 </div>
             ';
             exit();
@@ -116,10 +116,46 @@
         $contrasenya = password_hash($contrasenya_1, PASSWORD_BCRYPT,["cost"=>10]);
     }
 
+    # Guardando registros #
+    $guardar_usuario=conexion();
+    $guardar_usuario=$guardar_usuario->prepare("INSERT INTO usuario (
+                                                    usuario_nombre,
+                                                    usuario_apellido,
+                                                    usuario_usuario,
+                                                    usuario_clave,
+                                                    usuario_email) 
+                                                VALUES(
+                                                        :nombre,
+                                                        :apellido,
+                                                        :usuario,
+                                                        :contrasenya,
+                                                        :email
+                                                    )
+                                                ");
+    $marcadores=[
+        ":nombre"=>$nombre,
+        ":apellido"=>$apellido,
+        ":usuario"=>$usuario,
+        ":contrasenya"=>$contrasenya,
+        ":email"=>$email
+    ];
+    $guardar_usuario->execute($marcadores);
 
-
-
-
-
+    if($guardar_usuario->rowCount()==1){
+        echo '
+            <div class="notification is-info" is-light>
+                <strong>Usuario registrado</strong><br/>
+                El USUARIO ha sido registrado correctamente
+            </div>
+        ';
+    } else {
+        echo '
+            <div class="notification is-danger is-light">
+                <strong> Ocurrio un error inesperado</strong><br/>
+                No se pudo registrar el USUARIO, por favor intentelo de nuevo
+            </div>
+        ';
+    }
+    $guardar_usuario=null;
 
 ?>
