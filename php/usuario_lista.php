@@ -4,7 +4,7 @@
     $tabla = "";
 
     if(isset($busqueda) && $busqueda != " "){
-         $consulta_datos="SELECT * FROM usuario WHERE (
+        $consulta_datos="SELECT * FROM usuario WHERE (
             (usuario_id!='".$_SESSION['id']."') AND 
             (usuario_nombre LIKE '%$busqueda%' OR 
             usuario_apellido LIKE '%$busqueda%' OR 
@@ -13,7 +13,7 @@
             usuario_nombre ASC LIMIT $inicio,$registros";
 
         $consulta_total= "SELECT COUNT(usuario_id) FROM usuario WHERE (
-            (usuario_id!='" . $_SESSION['id'] . "') AND 
+            (usuario_id!='".$_SESSION['id']."') AND 
             (usuario_nombre LIKE '%$busqueda%' OR 
             usuario_apellido LIKE '%$busqueda%' OR 
             usuario_usuario LIKE '%$busqueda%' OR 
@@ -23,7 +23,7 @@
     } else {
         $consulta_datos="SELECT * FROM usuario WHERE usuario_id!='".$_SESSION['id']."' ORDER BY usuario_nombre ASC LIMIT $inicio,$registros";
 
-        $consulta_total="SELECT COUNT(usuario_id) usuario WHERE usuario_id!='".$_SESSION['id']."'";
+        $consulta_total="SELECT COUNT(usuario_id) FROM usuario WHERE usuario_id!='".$_SESSION['id']."'";
     }
 
     $conexion=conexion();
@@ -66,7 +66,7 @@
                         <a href="index.php?vista=user_update&user_id_up="'.$filas['usuario_id'].' class="button is-success is-rounded is-small">Actualizar</a>
                     </td>
                     <td>
-                        <a href="'.$url.$pagina. '&user_id_del="' . $filas['usuario_id'] . '" class="button is-danger is-rounded is-small">Eliminar</a>
+                        <a href="'.$url.$pagina.'&user_id_del="'.$filas['usuario_id'].'" class="button is-danger is-rounded is-small">Eliminar</a>
                     </td>
                 </tr>
             ';
@@ -97,7 +97,7 @@
 
     $tabla.='</tbody></table></div>';
 
-    if($total >= 1 && $pagina <= $Npaginas){
+    if($total >= 0 && $pagina <= $Npaginas){
         $tabla.= '
             <p class="has-text-right">Mostrando usuarios <strong>'.$pag_inicio.'</strong> al <strong>'.$pag_final.'</strong> de un <strong>total de '.$total.'</strong></p>
         ';

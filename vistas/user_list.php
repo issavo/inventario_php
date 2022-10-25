@@ -4,7 +4,7 @@
 </div>
 
 <div class="container pb-6 pt-6">
-
+    
     <?php
         require_once "./php/main.php";
 
@@ -18,7 +18,7 @@
         }
 
         $pagina=limpiar_cadena($pagina);
-        $url= "index.php?vista=user_lis&page=";
+        $url= "index.php?vista=user_list&page=";
         $registros=15;
         $busqueda="";
         
