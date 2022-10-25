@@ -16,7 +16,7 @@
     # Verificacion de datos obligatorios #
     if ($nombre == " " || $apellido == " " || $usuario == " " || $contrasenya_1 == " " || $contrasenya_2 == " "){
         echo '
-            <div class="notification is-danger">
+            <div class="notification is-danger is-light">
                 <strong> Ocurrio un error inesperado</strong><br/>
                 No has rellenado todos los campos que son obligatorios
             </div>
@@ -27,7 +27,7 @@
     # Verificacion integridad de los datos #
     if(verificar_datos("[a-zA-ZáéíóúÁÉÍÓÚñÑ ]{3,40}", $nombre)){
         echo '
-            <div class="notification is-danger">
+            <div class="notification is-danger is-light">
                 <strong> Ocurrio un error inesperado</strong><br/>
                 El NOMBRE no coincide con el formato solicitado
             </div>
@@ -36,7 +36,7 @@
     }
     if(verificar_datos("[a-zA-ZáéíóúÁÉÍÓÚñÑ ]{3,40}", $apellido)){
         echo '
-            <div class="notification is-danger">
+            <div class="notification is-danger is-light">
                 <strong> Ocurrio un error inesperado</strong><br/>
                 El APELLIDO no coincide con el formato solicitado
             </div>
@@ -45,7 +45,7 @@
     }
     if(verificar_datos("[a-zA-Z0-9]{4,20}", $usuario)){
         echo '
-            <div class="notification is-danger">
+            <div class="notification is-danger is-light">
                 <strong> Ocurrio un error inesperado</strong><br/>
                 El USUARIO no coincide con el formato solicitado
             </div>
@@ -55,7 +55,7 @@
 
     if(verificar_datos("[a-zA-Z0-9$@.-]{7,100}", $contrasenya_1) || verificar_datos("[a-zA-Z0-9$@.-]{7,100}", $contrasenya_1)){
         echo '
-            <div class="notification is-danger">
+            <div class="notification is-danger is-light">
                 <strong> Ocurrio un error inesperado</strong><br/>
                 Las CONTRASEÑAS no coincide con el formato solicitado
             </div>
@@ -70,7 +70,7 @@
             $check_email = $check_email->query("SELECT usuario_email FROM usuario WHERE usuario_email='$email'");
             if($check_email->rowCount() > 0){
             echo '
-                <div class="notification is-danger">
+                <div class="notification is-danger is-light">
                     <strong> Ocurrio un error inesperado</strong><br/>
                     El EMAIL introducido ya se ha registrado
                 </div>
@@ -80,7 +80,7 @@
             $check_email = null;
         } else {
             echo '
-                <div class="notification is-danger">
+                <div class="notification is-danger is-light">
                     <strong> Ocurrio un error inesperado</strong><br/>
                     El EMAIL introducido no es valido
                 </div>
@@ -94,7 +94,7 @@
     $check_usuario = $check_usuario->query("SELECT usuario_usuario FROM usuario WHERE usuario_usuario='$usuario'");
     if($check_usuario->rowCount() > 0){
         echo '
-        <div class="notification is-danger">
+        <div class="notification is-danger is-light">
             <strong> Ocurrio un error inesperado</strong><br/>
             El USUARIO introducido ya se ha registrado
         </div>
@@ -106,7 +106,7 @@
     # Verificacion de contraseñas iguales #
     if($contrasenya_1 != $contrasenya_2){
     echo '
-        <div class="notification is-danger">
+        <div class="notification is-danger is-light">
             <strong> Ocurrio un error inesperado</strong><br/>
             Las CONTRASEÑAS no coinciden
         </div>
