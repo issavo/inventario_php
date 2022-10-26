@@ -73,13 +73,13 @@
         } else {
             $tabla.= '<a class="pagination-previous" href="'.$url.($pagina-1). '">Anterior</a>
             <ul class="pagination-list">
-                <li><a class="pagination-link" href="'. $url . '1">1</a></li>
+                <li><a class="pagination-link" href="'.$url.'1">1</a></li>
                 <li><span class="pagination-ellipsis">&hellip;</span></li>
             ';
         }
 
         $ci = 0;
-        for($i=$pagina; $i <= $Npaginas; $i++){
+        for($i=$pagina; $i<=$Npaginas; $i++){
             if($ci >= $botones){
                 break;
             }
@@ -103,9 +103,7 @@
                 <li><span class="pagination-ellipsis">&hellip;</span></li>
                 <li><a class="pagination-link" href="'.$url.$Npaginas.'">'.$Npaginas.'</a></li>
             </ul>
-            <a class="pagination-next" href="'. $url . ($pagina + 1) .'">Siguiente</a>
-
-
+            <a class="pagination-next" href="'. $url.($pagina + 1).'">Siguiente</a>
             ';
         }
 
