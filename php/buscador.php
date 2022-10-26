@@ -21,7 +21,7 @@
             if ($txt == " ") {
                 echo '
                     <div class="notification is-danger is-light">
-                        <strong> Ocurrio un error inesperado</strong><br/>
+                        <strong> Ocurrió un error inesperado</strong><br/>
                         Introduzca un termino de búsqueda
                     </div>
                 ';
@@ -29,7 +29,7 @@
                 if (verificar_datos("[a-zA-Z0-9áéíóúÁÉÍÓÚñÑ ]{1,30}",$txt)) {
                     echo '
                         <div class="notification is-danger is-light">
-                            <strong> Ocurrio un error inesperado</strong><br/>
+                            <strong> Ocurrió un error inesperado</strong><br/>
                             El termino de búsqueda no coincide con el formato solicitado
                         </div>
                     ';
@@ -51,7 +51,7 @@
     } else {
         echo '
         <div class="notification is-danger is-light">
-            <strong> Ocurrio un error inesperado</strong><br/>
+            <strong> Ocurrió un error inesperado</strong><br/>
             No podemos procesar su petición
         </div>
         ';

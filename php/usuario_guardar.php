@@ -17,7 +17,7 @@
     if ($nombre == " " || $apellido == " " || $usuario == " " || $contrasenya_1 == " " || $contrasenya_2 == " "){
         echo '
             <div class="notification is-danger is-light">
-                <strong> Ocurrio un error inesperado</strong><br/>
+                <strong> Ocurrió un error inesperado</strong><br/>
                 No has rellenado todos los campos que son obligatorios
             </div>
         ';
@@ -28,16 +28,17 @@
     if(verificar_datos("[a-zA-ZáéíóúÁÉÍÓÚñÑ ]{3,40}", $nombre)){
         echo '
             <div class="notification is-danger is-light">
-                <strong> Ocurrio un error inesperado</strong><br/>
+                <strong> Ocurrió un error inesperado</strong><br/>
                 El NOMBRE no coincide con el formato solicitado
             </div>
         ';
         exit();
     }
+
     if(verificar_datos("[a-zA-ZáéíóúÁÉÍÓÚñÑ ]{3,40}", $apellido)){
         echo '
             <div class="notification is-danger is-light">
-                <strong> Ocurrio un error inesperado</strong><br/>
+                <strong> Ocurrió un error inesperado</strong><br/>
                 El APELLIDO no coincide con el formato solicitado
             </div>
         ';
@@ -46,7 +47,7 @@
     if(verificar_datos("[a-zA-Z0-9]{4,20}", $usuario)){
         echo '
             <div class="notification is-danger is-light">
-                <strong> Ocurrio un error inesperado</strong><br/>
+                <strong> Ocurrió un error inesperado</strong><br/>
                 El USUARIO no coincide con el formato solicitado
             </div>
         ';
@@ -56,7 +57,7 @@
     if(verificar_datos("[a-zA-Z0-9$@.-]{7,100}", $contrasenya_1) || verificar_datos("[a-zA-Z0-9$@.-]{7,100}", $contrasenya_1)){
         echo '
             <div class="notification is-danger is-light">
-                <strong> Ocurrio un error inesperado</strong><br/>
+                <strong> Ocurrió un error inesperado</strong><br/>
                 Las CONTRASEÑAS no coincide con el formato solicitado
             </div>
         ';
@@ -71,7 +72,7 @@
             if($check_email->rowCount() > 0){
             echo '
                 <div class="notification is-danger is-light">
-                    <strong> Ocurrio un error inesperado</strong><br/>
+                    <strong> Ocurrió un error inesperado</strong><br/>
                     El EMAIL introducido ya se ha registrado
                 </div>
             ';
@@ -81,7 +82,7 @@
         } else {
             echo '
                 <div class="notification is-danger is-light">
-                    <strong> Ocurrio un error inesperado</strong><br/>
+                    <strong> Ocurrió un error inesperado</strong><br/>
                     El EMAIL introducido no es valido
                 </div>
             ';
@@ -95,7 +96,7 @@
     if($check_usuario->rowCount() > 0){
         echo '
         <div class="notification is-danger is-light">
-            <strong> Ocurrio un error inesperado</strong><br/>
+            <strong> Ocurrió un error inesperado</strong><br/>
             El USUARIO introducido ya se ha registrado
         </div>
         ';
@@ -107,7 +108,7 @@
     if($contrasenya_1 != $contrasenya_2){
     echo '
         <div class="notification is-danger is-light">
-            <strong> Ocurrio un error inesperado</strong><br/>
+            <strong> Ocurrió un error inesperado</strong><br/>
             Las CONTRASEÑAS no coinciden
         </div>
     ';
@@ -116,7 +117,7 @@
         $contrasenya = password_hash($contrasenya_1, PASSWORD_BCRYPT,["cost"=>10]);
     }
 
-    # Guardando registros #
+    # Guardar datos en la BD #
     $guardar_usuario=conexion();
     $guardar_usuario=$guardar_usuario->prepare("INSERT INTO usuario (
                                                     usuario_nombre,
@@ -151,8 +152,8 @@
     } else {
         echo '
             <div class="notification is-danger is-light">
-                <strong> Ocurrio un error inesperado</strong><br/>
-                No se pudo registrar el USUARIO, por favor intentelo de nuevo
+                <strong> Ocurrió un error inesperado</strong><br/>
+                No se pudo registrar el USUARIO, por favor inténtelo de nuevo
             </div>
         ';
     }

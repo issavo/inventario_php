@@ -28,8 +28,8 @@
             } else {
                 echo '
                     <div class="notification is-danger is-light">
-                        <strong> Ocurrio un error inesperado</strong><br/>
-                        No se pudo eliminar el usuario, por favor intentelo de nuevo
+                        <strong> Ocurrió un error inesperado</strong><br/>
+                        No se pudo eliminar el usuario, por favor inténtelo de nuevo
                     </div>
                 ';
             }
@@ -38,8 +38,8 @@
         } else {
             echo '
                 <div class="notification is-danger is-light">
-                    <strong> Ocurrio un error inesperado</strong><br/>
-                El usuario tiene productos asociados
+                    <strong> Ocurrió un error inesperado</strong><br/>
+                    El usuario tiene productos asociados
                 </div>
             ';
         }
@@ -47,8 +47,8 @@
     } else {
         echo '
             <div class="notification is-danger is-light">
-                <strong> Ocurrio un error inesperado</strong><br/>
-               El usuario que intenta eliminar no existe
+                <strong> Ocurrió un error inesperado</strong><br/>
+                El usuario que intenta eliminar no existe
             </div>
         ';
     }
