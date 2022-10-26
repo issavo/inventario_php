@@ -7,6 +7,13 @@
     <?php
         require_once "./php/main.php";
 
+        // Eliminar usuario
+        if(isset($_GET['user_id_del'])){
+            require_once "./php/usuario_eliminar.php";
+        }
+
+        //buscador
+
         if(isset($_POST['modulo_buscador'])){
             require_once "./php/buscador.php";
         }

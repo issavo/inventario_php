@@ -7,6 +7,13 @@
     <?php
         require_once "./php/main.php";
 
+         // Eliminar categoria
+        if(isset($_GET['category_id_del'])){
+            require_once "./php/categoria_eliminar.php";
+        }
+
+
+        //Buscador
         if(isset($_POST['modulo_buscador'])){
             require_once "./php/buscador.php";
         }
