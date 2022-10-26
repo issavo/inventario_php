@@ -25,11 +25,11 @@
             <div class="navbar-item has-dropdown is-hoverable">
                 <a class="navbar-link">Categorias</a>
                 <div class="navbar-dropdown">
-                    <a class="navbar-item">Nueva</a>
-                    <a class="navbar-item">Lista</a>
+                    <a class="navbar-item" href="index.php?vista=category_new">Nueva</a>
+                    <a class="navbar-item" href="index.php?vista=category_list">Lista</a>
 
                     <hr class="navbar-divider">
-                    <a class="navbar-item">Buscar</a>
+                    <a class="navbar-item" href="index.php?vista=category_search">Buscar</a>
                 </div>
             </div>
             <div class="navbar-item has-dropdown is-hoverable">
@@ -47,7 +47,7 @@
         <div class="navbar-end">
             <div class="navbar-item">
                 <div class="buttons">
-                    <a class="button is-primary is-rounded" href="index.php?vista=user_update&user_id_up=<?php echo $_SESSION['id'] ;?>">
+                    <a class="button is-primary is-rounded" href="index.php?vista=user_update&user_id_up=<?php echo $_SESSION['id']; ?>">
                         Mi cuenta
                     </a>
                     <a class="button is-link is-rounded" href="index.php?vista=logout">
