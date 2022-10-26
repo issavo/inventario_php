@@ -13,7 +13,7 @@
     $contrasenya_2 = limpiar_cadena($_POST["usuario_contrasenya_2"]);
 
 
-    # Verificacion de datos obligatorios #
+    # Verificacion campos obligatorios #
     if ($nombre == " " || $apellido == " " || $usuario == " " || $contrasenya_1 == " " || $contrasenya_2 == " "){
         echo '
             <div class="notification is-danger is-light">
