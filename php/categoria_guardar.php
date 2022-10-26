@@ -1,7 +1,7 @@
 <?php
     require_once "main.php";
 
-    # Almacenando datos #
+    # Almacenando datos de categoria #
     $nombre = limpiar_cadena($_POST["categoria_nombre"]);
     $ubicacion = limpiar_cadena($_POST["categoria_ubicacion"]);
 
