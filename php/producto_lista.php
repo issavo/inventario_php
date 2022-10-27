@@ -33,14 +33,14 @@
     if($total >= 1 && $pagina <= $Npaginas){
         $contador=$inicio+1;
         $pag_inicio=$inicio+1;
-        foreach($datos as $fila){
+        foreach($datos as $filas){
             $tabla.=' 
             <article class="media">
                 <figure class="media-left">
                     <p class="image is-64x64">';
 
-                        if(is_file("./img/producto/".$fila['producto_foto'])){
-                            $tabla.='<img src="./img/producto/'.$fila['producto_foto'].'">';
+                        if(is_file("./img/producto/".$filas['producto_foto'])){
+                            $tabla.='<img src="./img/producto/'.$filas['producto_foto'].'">';
                         } else {
                             $tabla.='<img src="./img/producto.png">';
                         }          
@@ -49,20 +49,20 @@
                     <div class="media-content">
                         <div class="content">
                             <p>
-                                <strong>'.$contador.'- '. $fila['producto_nombre']. '</strong><br>
-                                <strong>CODIGO:</strong>'.$fila['producto_codigo']. ',
-                                <strong>PRECIO:</strong> $ '.$fila['producto_precio'].',
-                                <strong>STOCK:</strong>'.$fila['producto_stock'].',
-                                <strong>CATEGORIA:</strong>'.$fila['categoria_nombre'].',
-                                <strong>REGISTRADO POR:</strong>'.$fila['usuario_nombre'].''.$fila['usuario_apellido']. '
+                                <strong>'.$contador.'- '. $filas['producto_nombre']. '</strong><br>
+                                <strong>CODIGO:</strong>'.$filas['producto_codigo']. ',
+                                <strong>PRECIO:</strong> $ '.$filas['producto_precio'].',
+                                <strong>STOCK:</strong>'.$filas['producto_stock'].',
+                                <strong>CATEGORIA:</strong>'.$filas['categoria_nombre'].',
+                                <strong>REGISTRADO POR:</strong>'.$filas['usuario_nombre'].''.$filas['usuario_apellido']. '
                             </p>
                         </div>
                         <div class="has-text-right">
-                            <a href="index.php?vista=product_img&product_id_up="'. $fila['producto_id'].'" class="button is-link is-rounded is-small">Imagen</a>
+                            <a href="index.php?vista=product_img&product_id_up="'. $filas['producto_id'].'" class="button is-link is-rounded is-small">Imagen</a>
 
-                            <a href="index.php?vista=product_update&product_id_up="'.$fila['producto_id']. '" class="button is-success is-rounded is-small">Actualizar</a>
+                            <a href="index.php?vista=product_update&product_id_up="'.$filas['producto_id']. '" class="button is-success is-rounded is-small">Actualizar</a>
 
-                            <a  href="'.$url.$pagina.'&product_id_del="'.$fila['producto_id'].'" class="button is-danger is-rounded is-small">Eliminar</a>
+                            <a  href="'.$url.$pagina.'&product_id_del="'.$filas['producto_id'].'" class="button is-danger is-rounded is-small">Eliminar</a>
                         </div>
                     </div>
                 </article>
