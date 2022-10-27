@@ -7,12 +7,6 @@
      <?php
         require_once "./php/main.php";
 
-        //  // Eliminar categoria
-        // if(isset($_GET['category_id_del'])){
-        //     require_once "./php/categoria_eliminar.php";
-        // }
-
-
         //Buscador
         if(isset($_POST['modulo_buscador'])){
             require_once "./php/buscador.php";
@@ -50,6 +44,11 @@
         </div>
     </div>
     <?php
+        // Eliminar categoria
+        if (isset($_GET['product_id_del'])) {
+            require_once "./php/producto_eliminar.php";
+        }
+
         if (!isset($_GET['page'])) {
             $pagina = 1;
         } else {
