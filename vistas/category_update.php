@@ -13,7 +13,7 @@ $id = limpiar_cadena($id);
 
 <div class="container pb-6 pt-6">
     <?php
-    // Verificacion de usuario
+
     include "./inc/btn_back.php";
 
     $check_categoria = conexion();
