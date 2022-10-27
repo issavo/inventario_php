@@ -103,8 +103,112 @@
     }
     $check_categoria = null;
 
+    # Directorio de imagenes #
+    $img_dir="../img/producto/";
 
+    # Comprobar si se selecciono una imagen #
+    if ($_FILES['producto_foto']['name'] != " " && $_FILES['producto_foto']['size'] > 0) {
 
+        # Crear directorio de imagen #
+        if(!file_exists($img_dir)){
+            if(!mkdir($img_dir,0777)){
+                echo '
+                    <div class="notification is-danger is-light">
+                        <strong> Ocurrió un error inesperado</strong><br/>
+                        Error al crear el directorio
+                    </div>
+                ';
+                exit();
+            }
+        }
+
+        # Verificar formato imagen #
+        if(mime_content_type($_FILES['producto_foto']['tmp_name']) != "image/jpeg" && mime_content_type($_FILES['producto_foto']['tmp_name']) != "image/png"){
+            echo '
+                <div class="notification is-danger is-light">
+                    <strong> Ocurrió un error inesperado</strong><br/>
+                    La imagen seleccionada no tiene el formato permitido
+                </div>
+            ';
+            exit();
+        }
+
+        # Verificacion tamaño de la imagen #
+        if(($_FILES['producto_foto']['size']/1024) > 1024*3){
+            echo '
+                <div class="notification is-danger is-light">
+                    <strong> Ocurrió un error inesperado</strong><br/>
+                    La imagen seleccionada supera el peso permitido
+                </div>
+            ';
+            exit();
+        }
+
+        # Extension de la imagen #
+        switch (mime_content_type($_FILES['producto_foto']['tmp_name'])) {
+            case 'img/jpeg':
+                $img_ext=".jpeg";
+                break;
+            case 'img/png':
+                $img_ext=".png";
+                break;
+        }
+
+        chmod($img_dir,0777);
+
+        $img_nombre=renombrar_fotos($nombre);
+        $foto=$img_nombre.$img_ext;
+
+        # Mover imagen al directorio #
+        if(!move_uploaded_file($_FILES['producto_foto']['tmp_name'],$img_dir.$foto)){
+            echo '
+                <div class="notification is-danger is-light">
+                    <strong> Ocurrió un error inesperado</strong><br/>
+                    No se puede subir la imagen al sistema en este momento
+                </div>
+            ';
+            exit();
+        }
+    } else {
+        $foto="";
+    }
+
+    # Guardar datos en la BD #
+    $guardar_producto=conexion();
+    $guardar_producto= $guardar_producto->prepare("INSERT INTO producto (producto_codigo,producto_nombre,producto_precio,producto_stock,producto_foto,categoria_id,usuario_id) VALUES(:codigo,:nombre,:precio,:stock,:foto,:categoria,:usuario)");
+
+    $marcadores=[
+        ":codigo"=>$codigo,
+        ":nombre"=>$nombre,
+        ":precio"=>$precio,
+        ":stock"=>$stock,
+        ":foto"=>$foto,
+        ":categoria"=>$categoria,
+        ":usuario"=>$_SESSION['id']
+    ];
+
+    $guardar_producto->execute($marcadores);
+
+    if($guardar_producto->rowCount()==1){
+        echo '
+            <div class="notification is-info" is-light>
+                <strong>Producto registrado</strong><br/>
+                El PRODUCTO ha sido registrado correctamente
+            </div>
+        ';
+    } else {
+        if(is_file($img_dir.$foto)){
+            chmod($img_dir.$foto,0777);
+            unlink($img_dir.$foto);
+        }
+        echo '
+            <div class="notification is-danger is-light">
+                <strong> Ocurrió un error inesperado</strong><br/>
+                No se pudo registrar el PRODUCTO, por favor inténtelo de nuevo
+            </div>
+        ';
+    }
+    $guardar_producto=null;
     
 
 
