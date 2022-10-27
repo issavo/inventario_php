@@ -49,10 +49,10 @@
                     <td>'.$filas['categoria_nombre'].'</td>
                     <td>'.substr($filas['categoria_ubicacion'],0,25). '</td>
                     <td>
-                        <a href="index.php?vista=product_category&category_id_up="'.$filas['categoria_id'].' class="button is-link is-rounded is-small">Ver productos</a>
+                        <a href="index.php?vista=product_category&category_id_up="'.$filas['categoria_id'].'" class="button is-link is-rounded is-small">Ver productos</a>
                     </td>
                     <td>
-                        <a href="index.php?vista=category_update&category_id_up="'.$filas['categoria_id'].' class="button is-success is-rounded is-small">Actualizar</a>
+                        <a href="index.php?vista=category_update&category_id_up="'.$filas['categoria_id'].'" class="button is-success is-rounded is-small">Actualizar</a>
                     </td>
                     <td>
                         <a href="'.$url.$pagina.'&category_id_del="'.$filas['categoria_id'].'" class="button is-danger is-rounded is-small">Eliminar</a>
@@ -99,3 +99,4 @@
         echo paginador_tablas($pagina,$Npaginas,$url,7);
     
     }
+?>
